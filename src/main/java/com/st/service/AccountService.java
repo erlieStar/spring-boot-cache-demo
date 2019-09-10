@@ -1,36 +1,29 @@
 package com.st.service;
 
 import com.st.pojo.Account;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AccountService {
 
-  private Cache<Account> cache;
-
-  public AccountService() {
-    cache = new Cache<Account>();
-  }
-
+  @Cacheable(value = "cache", key = "#name")
   public Account getAccountByName(String name) {
-    Account result = cache.getValue(name);
-    // 如果在缓存中，则直接返回缓存的结果
-    if(result != null) {
-      System.out.println("get from cache " + name);
-      return result;
-    }
-    result = getFromDB(name);
-    // 将数据库查询的结果更新到缓存中
-    if(result != null) {
-      cache.addOrUpdateCache(name, result);
-    }
-    return result;
+    return getFromDB(name);
   }
 
-  public void reload() {
-    cache.evictCache();
+  @Cacheable(value = "cache1", key = "#name")
+  public Account getAccountByNameCache1(String name) {
+    return getFromDB(name);
+  }
+
+  @Cacheable(value = "cache2", key = "#name")
+  public Account getAccountByNameCache2(String name) {
+    return getFromDB(name);
   }
 
   private Account getFromDB(String name) {
     System.out.println("get from db " + name);
-    return new Account(1, name);
+    return new Account(name);
   }
 }
