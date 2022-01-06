@@ -1,6 +1,6 @@
-package com.st.service;
+package com.javashitang.service;
 
-import com.st.pojo.Account;
+import com.javashitang.pojo.Account;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

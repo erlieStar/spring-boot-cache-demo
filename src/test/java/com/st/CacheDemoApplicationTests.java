@@ -1,8 +1,8 @@
 package com.st;
 
-import com.st.pojo.Account;
-import com.st.service.AccountService;
-import com.st.service.AccountService1;
+import com.javashitang.pojo.Account;
+import com.javashitang.service.AccountService;
+import com.javashitang.service.AccountService1;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
