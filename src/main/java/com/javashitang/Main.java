@@ -1,6 +1,6 @@
-package com.st;
+package com.javashitang;
 
-import com.st.service.AccountService;
+import com.javashitang.service.AccountService;
 
 public class Main {
 
