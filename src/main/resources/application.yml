@@ -5,3 +5,6 @@ spring:
 server:
   servlet:
     context-path: /wx
+
+show:
+  test: 1,2,3
