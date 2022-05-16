@@ -1,6 +1,7 @@
 package com.javashitang.controller;
 
 import com.javashitang.service.IndexService;
+import com.javashitang.util.ThreadLocalUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,13 +12,16 @@ import javax.annotation.Resource;
  * @since 2022-01-11
  */
 @RestController
-public class IndexController {
+public class TestController {
 
 	@Resource
 	private IndexService indexService;
 
-	@RequestMapping("index")
+	@RequestMapping("test")
 	public String index() {
-		return indexService.index();
+		ThreadLocalUtil.setPath("com.javashitang.service.IndexService.index");
+		String result = indexService.index();
+		ThreadLocalUtil.remove();
+		return result;
 	}
 }
